@@ -1,10 +1,14 @@
 import { useState } from "react";
-import CategoriesDropDown from "./CategoriesDropDown";
+import NoteShow from "./NoteShow";
 
 function NoteList(){
 
     return(
-        <CategoriesDropDown />
+        <div>
+            <NoteShow />
+            <NoteShow />
+            <NoteShow />
+        </div>
     )
 }
 

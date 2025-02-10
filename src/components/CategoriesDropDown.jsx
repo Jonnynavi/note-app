@@ -1,10 +1,9 @@
 
 function CategoriesDropDown(){
     return(
-        <div>
             <div className="dropdown">
                 <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                    Dropdown button
+                    Categories
                 </button>
                 <ul className="dropdown-menu">
                     <li><a className="dropdown-item" href="#">Work</a></li>
@@ -13,7 +12,6 @@ function CategoriesDropDown(){
                     <li><a className="dropdown-item" href="#">All</a></li>
                 </ul>   
             </div>
-        </div>
     )
 }
 
