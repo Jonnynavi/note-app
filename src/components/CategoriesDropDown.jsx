@@ -1,29 +1,32 @@
 import { useState } from "react";
 
-function CategoriesDropDown(){
+function CategoriesDropDown({handleCategory}){
     const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState("");
+    const [selected, setSelected] = useState("Category");
 
+ 
     const handleClick = () =>{
         setIsOpen(!isOpen);
     }
 
     const handleSelect = (option) => {
         setSelected(option);
+        setIsOpen(false);
+        handleCategory(option)
     }
 
     const options = ["Work", "School", "Books", "All"]
 
     function renderOptions(){
         return options.map((option) => (
-            <li><a className="dropdown-item" href="#">{option}</a></li>
+            <li key={option + Math.random} onClick={() => handleSelect(option)}><a className="dropdown-item" href="#">{option}</a></li>
         ));
     }
 
     return(
             <div className="dropdown">
                 <button className="btn btn-outline-primary dropdown-toggle" type="button"  onClick={handleClick}>
-                    Category    
+                    {selected}    
                 </button>
                 <ul className={`dropdown-menu ${isOpen ? 'show':'' }`}>
                     {renderOptions()}

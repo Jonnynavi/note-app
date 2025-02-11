@@ -4,17 +4,27 @@ import NavBar from "./components/NavBar"
 import CreateNote from './components/CreateNote';
 
 function App(){
-    const [note, setNote] = useState([]);
+    const [notes, setNotes] = useState([]);
 
     const [createNoteShow, setCreateNoteShow] = useState(true);
 
+    const createNote = (title, category, noteText) => {
+        let newNote ={
+            title,
+            category,
+            noteText
+        };
+
+        setNotes([...notes, newNote]);
+    };
+
     function renderNewNote(){
         if(createNoteShow){
-            return <NoteList setCreateNoteShow={setCreateNoteShow} />
+            return <NoteList setCreateNoteShow={setCreateNoteShow} noteList={notes} />
         }else{
-            return <CreateNote setCreateNoteShow={setCreateNoteShow} />
+            return <CreateNote setCreateNoteShow={setCreateNoteShow} createNote={createNote} />
         }
-    }
+    };
 
     return(
         <div>
@@ -24,4 +34,4 @@ function App(){
     )
 }
 
-export default App
+export default App;
