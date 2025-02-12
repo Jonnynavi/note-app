@@ -21,7 +21,7 @@ function CreateNote({setCreateNoteShow, createNote}){
     }
 
     return(
-        <div>
+        <div className="create-note">
             <form onSubmit={handleSubmit}>
                 <div class="mb-3">
                     <label  class="form-label">Title</label>

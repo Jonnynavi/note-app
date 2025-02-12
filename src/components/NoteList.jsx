@@ -19,7 +19,7 @@ function NoteList({setCreateNoteShow, noteList}){
     }
 
     return(
-        <div>
+        <div className="note-list">
             {renderNotes()}
             <button onClick={handleClick}>Add Note</button>
         </div>
