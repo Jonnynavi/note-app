@@ -39,9 +39,14 @@ function App(){
         setNotes((oldNotes) => oldNotes.filter((note) => note.id !== noteId));
     };
 
+    const searchFilter = (filter) => {
+        const title = filter.title;
+        let results = notes.filter((note) => {
+            return  note.title.toLowerCase().startsWith(title.toLowerCase())
+        });
+    }
 
-
-
+    
     function renderNewNote(){
         if(createNoteShow){
             return <NoteList setCreateNoteShow={setCreateNoteShow} noteList={notes} editNote={editNote} deleteNote={deleteNote}/>
@@ -52,7 +57,7 @@ function App(){
 
     return(
         <div className='content'>
-            <NavBar />
+            <NavBar searchFilter={searchFilter} />
             {renderNewNote()}         
         </div>
     )
