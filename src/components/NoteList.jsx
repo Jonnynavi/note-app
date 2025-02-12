@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NoteShow from "./NoteShow";
 
-function NoteList({setCreateNoteShow, noteList}){
+function NoteList({setCreateNoteShow, noteList, editNote}){
     
     const handleClick = (event) => {
         setCreateNoteShow(false);
@@ -10,10 +10,9 @@ function NoteList({setCreateNoteShow, noteList}){
     function renderNotes(){
         return noteList.map((note, index) => (
             <NoteShow 
-                title={note.title} 
-                category={note.category} 
-                noteText={note.noteText} 
+                note={note}
                 key={index}
+                editNote={editNote}
             />
         ));
     }

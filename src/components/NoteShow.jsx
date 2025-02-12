@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EditNote from "./EditNote";
 
-function NoteShow({title, category, noteText}){
+function NoteShow({editNote, note}){
     const [showEdit, setShowEdit] = useState(false)
 
     const handleClick = () =>{
@@ -10,13 +10,13 @@ function NoteShow({title, category, noteText}){
 
     function renderEdit(){
         if(!showEdit){
-            return  <div><h5 className="card-title">{title}</h5>
-            <h6 className="card-subtitle mb-2 text-body-secondary">{category}</h6>
-            <p className="card-text">{noteText}</p>
+            return  <div><h5 className="card-title">{note.title}</h5>
+            <h6 className="card-subtitle mb-2 text-body-secondary">{note.category}</h6>
+            <p className="card-text">{note.noteText}</p>
             <button onClick={handleClick} className="Edit-button btn btn-outline-success">Edit</button>
             </div>
         }else{
-            return <EditNote handleClick={handleClick}/>
+            return <EditNote editNote={editNote} note={note} handleClick={handleClick}/>
         }
     }
 

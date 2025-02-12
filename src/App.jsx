@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import NoteList from "./components/Notelist"
-import NavBar from "./components/NavBar"
+import { useState } from 'react';
+import NoteList from './components/NoteList';
+import NavBar from "./components/NavBar";
 import CreateNote from './components/CreateNote';
 
 function App(){
@@ -26,10 +26,21 @@ function App(){
         setNotes([...notes, newNote]);
     };
 
+    const editNote = (editedNote) => {
+        console.log("part 1")
+        setNotes((oldNotes) =>
+            oldNotes.map((note) =>
+                note.id === editedNote.id ? {...note, ...editedNote} :  note
+            )
+        );
+    };
+
+
+
 
     function renderNewNote(){
         if(createNoteShow){
-            return <NoteList setCreateNoteShow={setCreateNoteShow} noteList={notes} />
+            return <NoteList setCreateNoteShow={setCreateNoteShow} noteList={notes} editNote={editNote}/>
         }else{
             return <CreateNote setCreateNoteShow={setCreateNoteShow} createNote={createNote} />
         }
