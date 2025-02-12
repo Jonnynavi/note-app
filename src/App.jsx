@@ -35,12 +35,16 @@ function App(){
         );
     };
 
+    const deleteNote = (noteId) => {
+        setNotes((oldNotes) => oldNotes.filter((note) => note.id !== noteId));
+    };
+
 
 
 
     function renderNewNote(){
         if(createNoteShow){
-            return <NoteList setCreateNoteShow={setCreateNoteShow} noteList={notes} editNote={editNote}/>
+            return <NoteList setCreateNoteShow={setCreateNoteShow} noteList={notes} editNote={editNote} deleteNote={deleteNote}/>
         }else{
             return <CreateNote setCreateNoteShow={setCreateNoteShow} createNote={createNote} />
         }

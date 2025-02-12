@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NoteShow from "./NoteShow";
 
-function NoteList({setCreateNoteShow, noteList, editNote}){
+function NoteList({setCreateNoteShow, noteList, editNote, deleteNote}){
     
     const handleClick = (event) => {
         setCreateNoteShow(false);
@@ -13,6 +13,7 @@ function NoteList({setCreateNoteShow, noteList, editNote}){
                 note={note}
                 key={index}
                 editNote={editNote}
+                deleteNote={deleteNote}
             />
         ));
     }

@@ -1,11 +1,15 @@
 import { useState } from "react";
 import EditNote from "./EditNote";
 
-function NoteShow({editNote, note}){
+function NoteShow({editNote, note, deleteNote}){
     const [showEdit, setShowEdit] = useState(false)
 
     const handleClick = () =>{
         setShowEdit(!showEdit);
+    };
+
+    const handleDelete = () =>{
+        deleteNote(note.id);
     };
 
     function renderEdit(){
@@ -14,6 +18,7 @@ function NoteShow({editNote, note}){
             <h6 className="card-subtitle mb-2 text-body-secondary">{note.category}</h6>
             <p className="card-text">{note.noteText}</p>
             <button onClick={handleClick} className="Edit-button btn btn-outline-success">Edit</button>
+            <button className="btn btn-outline-danger" onClick={handleDelete}>Delete</button>
             </div>
         }else{
             return <EditNote editNote={editNote} note={note} handleClick={handleClick}/>
