@@ -1,4 +1,3 @@
-You are absolutely right! I apologize for the oversight. I've corrected the previous response to include all parts.
 
 ```markdown
 # Note App
