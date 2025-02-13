@@ -46,7 +46,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
    npm run dev
    ```
 
-   The app will be available at `http://localhost:3000`.
+   The app will be available at `http://localhost:5173`.
 
 ## How to Use
 
