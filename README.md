@@ -1,4 +1,3 @@
-
 ```markdown
 # Note App
 
