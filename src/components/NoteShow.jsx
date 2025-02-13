@@ -18,7 +18,7 @@ function NoteShow({editNote, note, deleteNote}){
             <h6 className="card-subtitle mb-2 text-body-secondary">{note.category}</h6>
             <p className="card-text">{note.noteText}</p>
             <button onClick={handleClick} className="Edit-button btn btn-outline-success">Edit</button>
-            <button className="btn btn-outline-danger" onClick={handleDelete}>Delete</button>
+            <button className="ml-auto btn btn-outline-danger " onClick={handleDelete}>Delete</button>
             </div>
         }else{
             return <EditNote editNote={editNote} note={note} handleClick={handleClick}/>

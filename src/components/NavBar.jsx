@@ -3,21 +3,26 @@ import CategoriesDropDown from "./CategoriesDropDown";
 
 function NavBar({searchFilter}){
 
-    const [term, setTerm] = useState("")
+    const [title, setTitle] = useState("")
+    const [category, setCategory] = useState("")
+
+    const handleCategory = (category) => {
+        setCategory(category)
+        searchFilter({
+            title,
+            category
+        })
+    }
 
     const handleChange = (e) => {
         let title = e.target.value;
-        let isEmpty = true
-        setTerm(e.target.value)
-        if(e.target.value !== ""){
-            isEmpty = false;
-        };
-
+        setTitle(e.target.value)
         searchFilter({
             title,
-            isEmpty
+            category
         })
     }
+
 
 
     return(
@@ -25,8 +30,8 @@ function NavBar({searchFilter}){
             <div class="container-fluid">
                 <a class="navbar-brand">Navi Notes</a>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" onChange={handleChange} type="search" placeholder="Search" aria-label="Search" value={term}/>
-                    <CategoriesDropDown />
+                    <input class="form-control me-2" onChange={handleChange} type="search" placeholder="Search" aria-label="Search" value={title}/>
+                    <CategoriesDropDown handleCategory={handleCategory}/>
                 </form>
             </div>
         </nav>

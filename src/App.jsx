@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NoteList from './components/NoteList';
 import NavBar from "./components/NavBar";
 import CreateNote from './components/CreateNote';
@@ -26,13 +26,13 @@ function App(){
             id: 2
         },
         {
-            title: "harry",
+            title: "ho",
             category: "Work",
             noteText,
             id: 3
         },
         {
-            title: "harry",
+            title: "lucif",
             category: "Books",
             noteText,
             id: 4
@@ -41,12 +41,20 @@ function App(){
     const [filteredSearch, setFilteredSearch] = useState(notes);
     const [createNoteShow, setCreateNoteShow] = useState(true);
 
+    useEffect(() => {
+        setFilteredSearch((prevFilteredNotes) => {
+            return notes.filter(note =>
+                prevFilteredNotes.some(filteredNote => filteredNote.id === note.id)
+            );
+        });
+    }, [notes]);
+
     const createNote = (title, category, noteText) => {
         let newNote ={
             title,
             category,
             noteText,
-            id: Math.random() * 10
+            id: Math.random() * 10 * Math.random()
         };
 
         setNotes([...notes, newNote]);
@@ -67,8 +75,13 @@ function App(){
 
     const searchFilter = (filter) => {
         let results = notes;
-        if(!filter.isEmpty){
-            results = notes.filter((note) => {
+        if(filter.category !== ""){
+            results = results.filter((note) => {
+                return  note.category.toLowerCase() === filter.category.toLowerCase();
+            });
+        }
+        if(filter.title !== ""){
+            results = results.filter((note) => {
                 return  note.title.toLowerCase().startsWith(filter.title.toLowerCase())
             });
         }

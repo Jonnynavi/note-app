@@ -3,7 +3,7 @@ import NoteShow from "./NoteShow";
 
 function NoteList({setCreateNoteShow, noteList, editNote, deleteNote}){
     
-    const handleClick = (event) => {
+    const handleClick = () => {
         setCreateNoteShow(false);
     };
 
