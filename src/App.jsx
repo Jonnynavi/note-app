@@ -4,15 +4,41 @@ import NavBar from "./components/NavBar";
 import CreateNote from './components/CreateNote';
 
 function App(){
+
+    const noteText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     const [notes, setNotes] = useState([
         {
             title: "harry",
             category: "Work",
-            noteText: "sup",
+            noteText,
             id: 0
+        },
+        {
+            title: "Ice",
+            category: "Work",
+            noteText,
+            id: 1
+        },
+        {
+            title: "money",
+            category: "School",
+            noteText,
+            id: 2
+        },
+        {
+            title: "harry",
+            category: "Work",
+            noteText,
+            id: 3
+        },
+        {
+            title: "harry",
+            category: "Books",
+            noteText,
+            id: 4
         }
     ]);
-
+    const [filteredSearch, setFilteredSearch] = useState(notes);
     const [createNoteShow, setCreateNoteShow] = useState(true);
 
     const createNote = (title, category, noteText) => {
@@ -40,16 +66,18 @@ function App(){
     };
 
     const searchFilter = (filter) => {
-        const title = filter.title;
-        let results = notes.filter((note) => {
-            return  note.title.toLowerCase().startsWith(title.toLowerCase())
-        });
+        let results = notes;
+        if(!filter.isEmpty){
+            results = notes.filter((note) => {
+                return  note.title.toLowerCase().startsWith(filter.title.toLowerCase())
+            });
+        }
+        setFilteredSearch(results);
     }
-
     
     function renderNewNote(){
         if(createNoteShow){
-            return <NoteList setCreateNoteShow={setCreateNoteShow} noteList={notes} editNote={editNote} deleteNote={deleteNote}/>
+            return <NoteList setCreateNoteShow={setCreateNoteShow} noteList={filteredSearch} editNote={editNote} deleteNote={deleteNote}/>
         }else{
             return <CreateNote setCreateNoteShow={setCreateNoteShow} createNote={createNote} />
         }
