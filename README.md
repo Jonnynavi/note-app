@@ -66,11 +66,12 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
 /note-app
   /src
     /components
-      NoteList.js      # Displays the list of notes
-      NoteShow.js      # Displays each individual note
-      CreateNote.js    # Form for creating new notes
-      NavBar.js        # Navigation and search bar
-    App.js             # Main app component, manages state and logic
-    index.js           # Entry point, renders the app
-    styles.css         # Global styles
+      NoteList.js              # Displays the list of notes
+      NoteShow.js              # Displays each individual note
+      CreateNote.js            # Form for creating new notes
+      NavBar.js                # Navigation and search bar
+      CategoriesDropDown.js    # Select category dropdown
+    App.js                     # Main app component, manages state and logic
+    index.js                   # Entry point, renders the app
+    styles.css                 # Global styles
 ```
