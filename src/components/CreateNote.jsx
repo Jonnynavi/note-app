@@ -28,13 +28,13 @@ function CreateNote({setCreateNoteShow, createNote}){
                     <input  class="form-control" value={title} onChange={handleChange} />
                 </div>
                 <div class="mb-3">
-                    <CategoriesDropDown handleCategory={handleCategory}/>
+                    <CategoriesDropDown handleCategory={handleCategory} options={["Work", "School", "Books"]}/>
                 </div>
                 <div class="mb-3">
                     <label  class="form-label">Note</label>
                     <textarea class="form-control" value={note} onChange={(e) => setNote(e.target.value)} rows="3"></textarea>
                 </div>
-                <button className="btn btn-outline-success">Create</button>
+                <button className="btn btn-outline-success" >Create</button>
             </form>
         </div>
     )

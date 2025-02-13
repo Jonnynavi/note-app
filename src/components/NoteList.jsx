@@ -21,7 +21,7 @@ function NoteList({setCreateNoteShow, noteList, editNote, deleteNote}){
     return(
         <div className="note-list">
             {renderNotes()}
-            <button onClick={handleClick}>Add Note</button>
+            <button className="btn btn-outline-primary btn-lg btn-block " style={{width: `100%`}} onClick={handleClick}>Add Note</button>
         </div>
     )
 }

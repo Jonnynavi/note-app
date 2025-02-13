@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function CategoriesDropDown({handleCategory}){
+function CategoriesDropDown({handleCategory, options}){
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState("Category");
 
@@ -15,7 +15,6 @@ function CategoriesDropDown({handleCategory}){
         handleCategory(option)
     }
 
-    const options = ["Work", "School", "Books", "All"]
 
     function renderOptions(){
         return options.map((option) => (

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './main.css'
 import NoteList from './components/NoteList';
 import NavBar from "./components/NavBar";
 import CreateNote from './components/CreateNote';
@@ -42,11 +43,12 @@ function App(){
     const [createNoteShow, setCreateNoteShow] = useState(true);
 
     useEffect(() => {
-        setFilteredSearch((prevFilteredNotes) => {
-            return notes.filter(note =>
-                prevFilteredNotes.some(filteredNote => filteredNote.id === note.id)
-            );
-        });
+        // setFilteredSearch((prevFilteredNotes) => {
+        //     return notes.filter(note =>
+        //         prevFilteredNotes.some(filteredNote => filteredNote.id === note.id)
+        //     );
+        // });
+        setFilteredSearch(notes)
     }, [notes]);
 
     const createNote = (title, category, noteText) => {

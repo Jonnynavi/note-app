@@ -7,6 +7,9 @@ function NavBar({searchFilter}){
     const [category, setCategory] = useState("")
 
     const handleCategory = (category) => {
+        if(category === "All"){
+            category = ""
+        }
         setCategory(category)
         searchFilter({
             title,
@@ -31,7 +34,7 @@ function NavBar({searchFilter}){
                 <a class="navbar-brand">Navi Notes</a>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" onChange={handleChange} type="search" placeholder="Search" aria-label="Search" value={title}/>
-                    <CategoriesDropDown handleCategory={handleCategory}/>
+                    <CategoriesDropDown handleCategory={handleCategory} options={["Work", "School", "Books","All"]}/>
                 </form>
             </div>
         </nav>
