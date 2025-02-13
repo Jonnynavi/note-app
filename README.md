@@ -51,6 +51,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
 ## How to Use
 
 - **Create a Note**: Click the button to open the create note form, enter the title, category, and content, then save it.
+![create note](src/assets/note-app-sceenshots/Note Create.png)
 - **Search Notes**: Use the search bar to filter notes by title (it matches from the beginning of the title).
 - **Filter Notes by Category**: Select a category from the dropdown to filter notes by their category.
 - **Edit Notes**: Click the edit button to modify a note's title, content, or category.

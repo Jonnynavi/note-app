@@ -32,13 +32,13 @@ function EditNote({handleClick, editNote, note}){
                     <input  className="form-control" onChange={(e) => setTitle(e.target.value)} value={title} />
                 </div>
                 <div className="mb-3">
-                    <CategoriesDropDown handleCategory={handleCategory}/>
+                    <CategoriesDropDown handleCategory={handleCategory} options={["Work", "School", "Books"]}/>
                 </div>
                 <div className="mb-3">
                     <label  className="form-label">Note</label>
                     <textarea className="form-control" value={textArea} onChange={(e) => setTextArea(e.target.value)} rows="3"></textarea>
                 </div>
-                <button type="submit" className="btn btn-outline-success">Edit</button>
+                <button type="submit" className="btn btn-outline-success">Save</button>
             </form>
         </div>
     )
