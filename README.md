@@ -1,4 +1,3 @@
-```markdown
 # Note App
 
 A simple Note-taking app built with React that allows users to create, edit, filter, search, categorize, and delete notes.
@@ -25,7 +24,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
 
 1. Clone this repository:
 
-   ```bash
+    ```bash
    git clone https://github.com/yourusername/note-app.git
    ```
 
