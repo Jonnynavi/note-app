@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CategoriesDropDown from "./CategoriesDropDown";
+import NoteContext from "../context/note";
 
-function EditNote({handleClick, editNote, note}){
-
+function EditNote({handleClick, note}){
+    const {editNote} = useContext(NoteContext);
+    
     const [textArea, setTextArea] = useState(note.noteText);
     const [title, setTitle] = useState(note.title);
     const [category, setCategory] = useState(note.category|| "");

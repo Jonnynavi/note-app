@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CategoriesDropDown from "./CategoriesDropDown";
+import NoteContext from "../context/note";
 
-function CreateNote({setCreateNoteShow, createNote}){
+function CreateNote({setCreateNoteShow}){
 
+    const { createNote } = useContext(NoteContext)
     const [title, setTitle] = useState("");
-    const [note, setNote] = useState("");
+    const [noteText, setNoteText] = useState("");
     const [category, setCategory] = useState("");
 
     const handleChange = (event) => {
         setTitle(event.target.value);
     }
+    
     const handleSubmit = (event) => {
         event.preventDefault();
-        createNote(title, category, note);
+        createNote({
+            title,
+            category,
+            noteText
+        });
         setCreateNoteShow(true);
     };
 
@@ -32,7 +39,7 @@ function CreateNote({setCreateNoteShow, createNote}){
                 </div>
                 <div class="mb-3">
                     <label  class="form-label">Note</label>
-                    <textarea class="form-control" value={note} onChange={(e) => setNote(e.target.value)} rows="3"></textarea>
+                    <textarea class="form-control" value={noteText} onChange={(e) => setNoteText(e.target.value)} rows="3"></textarea>
                 </div>
                 <button className="btn btn-outline-success" >Create</button>
             </form>
