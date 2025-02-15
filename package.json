@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "server": "json-server -p $PORT -H 0.0.0.0 --watch db.json",
     "build": "vite build",
     "lint": "eslint .",
