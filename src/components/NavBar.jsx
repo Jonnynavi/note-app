@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CategoriesDropDown from "./CategoriesDropDown";
+import NoteContext from "../context/note";
 
-function NavBar({searchFilter}){
 
+function NavBar({}){
+
+    const {searchFilter, setFilter} =  useContext(NoteContext)
     const [title, setTitle] = useState("")
     const [category, setCategory] = useState("")
 

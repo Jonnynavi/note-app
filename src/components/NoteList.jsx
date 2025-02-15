@@ -2,16 +2,16 @@ import { useState, useContext } from "react";
 import NoteShow from "./NoteShow";
 import NoteContext from "../context/note";
 
-function NoteList({setCreateNoteShow, noteList, editNote, deleteNote}){
+function NoteList({setCreateNoteShow, editNote, deleteNote}){
     
-    const {notes} = useContext(NoteContext)
+    const {filteredNotes} = useContext(NoteContext)
 
     const handleClick = () => {
         setCreateNoteShow(false);
     };
 
     function renderNotes(){
-        return notes.map((note, index) => (
+        return filteredNotes.map((note, index) => (
             <NoteShow 
                 note={note}
                 key={index}

@@ -1,4 +1,4 @@
-import { createContext, useState, useCallback } from "react";
+import { createContext, useState, useCallback, useEffect } from "react";
 import axios from "axios";
 
 const  NoteContext = createContext();
@@ -6,11 +6,39 @@ const  NoteContext = createContext();
 function Provider({ children }) {
 
     const [notes, setNotes] = useState([]);
-    
+    const [filteredNotes, setfilteredNotes] = useState([]);
+    const [filter, setFilter] = useState({
+        title: "",
+        category: ""
+    })
+
+ 
     const fetchNotes = useCallback(async () => {
         const response = await axios.get('http://localhost:3001/notes');
         setNotes(response.data);
+        setfilteredNotes(response.data)
     }, []);
+
+    const applyFilter = (filter) => {
+        setFilter(filter);
+        let results = notes;
+        if(filter.category !== ""){
+            results = results.filter((note) => {
+                return  note.category.toLowerCase() === filter.category.toLowerCase();
+            });
+        }
+        if(filter.title !== ""){
+            results = results.filter((note) => {
+                return  note.title.toLowerCase().startsWith(filter.title.toLowerCase())
+            });
+        }
+        setfilteredNotes(results);
+    }
+    
+    //Anytime filter or notes change it will reapply the filters
+    useEffect(() => {
+        applyFilter(filter)
+    }, [filter, notes]);
 
     const createNote = async (newNote) => {
         const response = await axios.post('http://localhost:3001/notes', newNote);
@@ -42,12 +70,18 @@ function Provider({ children }) {
 
         setNotes(updatedNotes);
     }
+
+    const searchFilter = (newFilter) => {
+        setFilter(newFilter);
+    }
+
     const valueToShare = {
-        notes,
+        filteredNotes,
         fetchNotes,
         createNote, 
         deleteNote,
-        editNote
+        editNote,
+        searchFilter
     }
 
     return(
