@@ -3,6 +3,7 @@ import axios from "axios";
 
 const  NoteContext = createContext();
 
+const url = "https://note-app-0zsm.onrender.com/notes"
 function Provider({ children }) {
 
     const [notes, setNotes] = useState([]);
@@ -14,7 +15,7 @@ function Provider({ children }) {
 
  
     const fetchNotes = useCallback(async () => {
-        const response = await axios.get('http://localhost:10000/notes');
+        const response = await axios.get(url);
         setNotes(response.data);
         setfilteredNotes(response.data)
     }, []);
@@ -41,14 +42,14 @@ function Provider({ children }) {
     }, [filter, notes]);
 
     const createNote = async (newNote) => {
-        const response = await axios.post('http://localhost:10000/notes', newNote);
+        const response = await axios.post(url, newNote);
 
         const updatedNotes = [...notes, response.data];
         setNotes(updatedNotes);
     }
 
     const deleteNote = async (id) => {
-        const response = await axios.delete(`http://localhost:10000/notes/${id}`);
+        const response = await axios.delete(`${url}/${id}`);
         
         const updatedNotes = notes.filter((note => {
             return note.id !== id;
@@ -58,7 +59,7 @@ function Provider({ children }) {
     }
 
     const editNote = async (note) => {
-        const response = await axios.put(`http://localhost:10000/notes/${note.id}`, note);
+        const response = await axios.put(`${url}/${note.id}`, note);
 
         const updatedNotes = notes.map((updatedNote) => {
             if(note.id === updatedNote.id ){
