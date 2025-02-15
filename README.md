@@ -39,7 +39,11 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
    ```bash
    npm install
    ```
+4. Start the development server:
 
+   ```bash
+   npm run server
+   ```
 4. Start the development server:
 
    ```bash
