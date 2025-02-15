@@ -16,29 +16,6 @@ function App(){
         fetchNotes()
     }, [fetchNotes]);
 
-    const createNote = (title, category, noteText) => {
-        let newNote ={
-            title,
-            category,
-            noteText,
-            id: Math.random() * 10 * Math.random()
-        };
-
-        setNotes([...notes, newNote]);
-    };
-
-    const editNote = (editedNote) => {
-        console.log("part 1")
-        setNotes((oldNotes) =>
-            oldNotes.map((note) =>
-                note.id === editedNote.id ? {...note, ...editedNote} :  note
-            )
-        );
-    };
-
-    const deleteNote = (noteId) => {
-        setNotes((oldNotes) => oldNotes.filter((note) => note.id !== noteId));
-    };
 
     const searchFilter = (filter) => {
         let results = notes;
@@ -57,9 +34,9 @@ function App(){
     
     function renderNewNote(){
         if(createNoteShow){
-            return <NoteList setCreateNoteShow={setCreateNoteShow} editNote={editNote} deleteNote={deleteNote}/>
+            return <NoteList setCreateNoteShow={setCreateNoteShow} />
         }else{
-            return <CreateNote setCreateNoteShow={setCreateNoteShow} createNote={createNote} />
+            return <CreateNote setCreateNoteShow={setCreateNoteShow}  />
         }
     };
 

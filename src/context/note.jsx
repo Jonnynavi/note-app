@@ -28,11 +28,26 @@ function Provider({ children }) {
 
         setNotes(updatedNotes);
     }
+
+    const editNote = async (note) => {
+        const response = await axios.put(`http://localhost:3001/notes/${note.id}`, note);
+
+        const updatedNotes = notes.map((updatedNote) => {
+            if(note.id === updatedNote.id ){
+                return {...updatedNote, ...response.data};
+            }
+
+            return updatedNote;
+        })
+
+        setNotes(updatedNotes);
+    }
     const valueToShare = {
         notes,
         fetchNotes,
         createNote, 
-        deleteNote
+        deleteNote,
+        editNote
     }
 
     return(
