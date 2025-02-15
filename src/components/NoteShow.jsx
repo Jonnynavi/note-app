@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import EditNote from "./EditNote";
+import NoteContext from "../context/note";
 
-function NoteShow({editNote, note, deleteNote}){
-    const [showEdit, setShowEdit] = useState(false)
+function NoteShow({editNote, note}){
+    const { deleteNote } = useContext(NoteContext);
+    const [showEdit, setShowEdit] = useState(false);
 
     const handleClick = () =>{
         setShowEdit(!showEdit);

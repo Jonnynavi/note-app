@@ -19,10 +19,20 @@ function Provider({ children }) {
         setNotes(updatedNotes);
     }
 
+    const deleteNote = async (id) => {
+        const response = await axios.delete(`http://localhost:3001/notes/${id}`);
+        
+        const updatedNotes = notes.filter((note => {
+            return note.id !== id;
+        }));
+
+        setNotes(updatedNotes);
+    }
     const valueToShare = {
         notes,
         fetchNotes,
-        createNote
+        createNote, 
+        deleteNote
     }
 
     return(

@@ -12,6 +12,7 @@ function CreateNote({setCreateNoteShow}){
     const handleChange = (event) => {
         setTitle(event.target.value);
     }
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         createNote({
