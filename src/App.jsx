@@ -15,8 +15,6 @@ function App(){
     }, [fetchNotes]);
 
 
-    
-    
     function renderNewNote(){
         if(createNoteShow){
             return <NoteList setCreateNoteShow={setCreateNoteShow} />
