@@ -9,52 +9,12 @@ function App(){
     
     const { fetchNotes } = useContext(NoteContext)
 
-
-    const noteText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    const [notes, setNotes] = useState([
-        {
-            title: "harry",
-            category: "Work",
-            noteText,
-            id: 0
-        },
-        {
-            title: "Ice",
-            category: "Work",
-            noteText,
-            id: 1
-        },
-        {
-            title: "money",
-            category: "School",
-            noteText,
-            id: 2
-        },
-        {
-            title: "ho",
-            category: "Work",
-            noteText,
-            id: 3
-        },
-        {
-            title: "lucif",
-            category: "Books",
-            noteText,
-            id: 4
-        }
-    ]);
-    const [filteredSearch, setFilteredSearch] = useState(notes);
     const [createNoteShow, setCreateNoteShow] = useState(true);
+
     console.log()
     useEffect(() => {
-        console.log(fetchNotes())
-        // setFilteredSearch((prevFilteredNotes) => {
-        //     return notes.filter(note =>
-        //         prevFilteredNotes.some(filteredNote => filteredNote.id === note.id)
-        //     );
-        // });
-        setFilteredSearch(notes)
-    }, [notes]);
+        fetchNotes()
+    }, [fetchNotes]);
 
     const createNote = (title, category, noteText) => {
         let newNote ={
@@ -97,7 +57,7 @@ function App(){
     
     function renderNewNote(){
         if(createNoteShow){
-            return <NoteList setCreateNoteShow={setCreateNoteShow} noteList={filteredSearch} editNote={editNote} deleteNote={deleteNote}/>
+            return <NoteList setCreateNoteShow={setCreateNoteShow} editNote={editNote} deleteNote={deleteNote}/>
         }else{
             return <CreateNote setCreateNoteShow={setCreateNoteShow} createNote={createNote} />
         }
