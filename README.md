@@ -43,10 +43,10 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
 4. Start the development server:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
-   The app will be available at `http://localhost:3000`.
+   The app will be available at `http://localhost:5173`.
 
 ## How to Use
 
@@ -66,11 +66,12 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
 /note-app
   /src
     /components
-      NoteList.js      # Displays the list of notes
-      NoteShow.js      # Displays each individual note
-      CreateNote.js    # Form for creating new notes
-      NavBar.js        # Navigation and search bar
-    App.js             # Main app component, manages state and logic
-    index.js           # Entry point, renders the app
-    styles.css         # Global styles
+      NoteList.jsx              # Displays the list of notes
+      NoteShow.jsx              # Displays each individual note
+      CreateNote.jsx            # Form for creating new notes
+      NavBar.jsx                # Navigation and search bar
+      CategoriesDropDown.jsx    # Select category dropdown
+    App.jsx                     # Main app component, manages state and logic
+    main.jsx                   # Entry point, renders the app
+    styles.css                 # Global styles
 ```
