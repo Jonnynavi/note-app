@@ -75,7 +75,9 @@ Make sure you have [Node.js](https://nodejs.org/) installed.
       CreateNote.jsx            # Form for creating new notes
       NavBar.jsx                # Navigation and search bar
       CategoriesDropDown.jsx    # Select category dropdown
-    App.jsx                     # Main app component, manages state and logic
+    /context
+        note.jsx               # Crud Functions  
+    App.jsx                    # Main app component, manages state and logic
     main.jsx                   # Entry point, renders the app
     styles.css                 # Global styles
 ```
