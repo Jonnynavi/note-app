@@ -12,9 +12,17 @@ function Provider({ children }) {
         setNotes(response.data);
     }, []);
 
+    const createNote = async (newNote) => {
+        const response = await axios.post('http://localhost:3001/notes', newNote);
+
+        const updatedNotes = [...notes, response.data];
+        setNotes(updatedNotes);
+    }
+
     const valueToShare = {
         notes,
-        fetchNotes
+        fetchNotes,
+        createNote
     }
 
     return(
