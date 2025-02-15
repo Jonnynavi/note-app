@@ -14,7 +14,7 @@ function Provider({ children }) {
 
  
     const fetchNotes = useCallback(async () => {
-        const response = await axios.get('http://localhost:3001/notes');
+        const response = await axios.get('http://localhost:10000/notes');
         setNotes(response.data);
         setfilteredNotes(response.data)
     }, []);
@@ -41,14 +41,14 @@ function Provider({ children }) {
     }, [filter, notes]);
 
     const createNote = async (newNote) => {
-        const response = await axios.post('http://localhost:3001/notes', newNote);
+        const response = await axios.post('http://localhost:10000/notes', newNote);
 
         const updatedNotes = [...notes, response.data];
         setNotes(updatedNotes);
     }
 
     const deleteNote = async (id) => {
-        const response = await axios.delete(`http://localhost:3001/notes/${id}`);
+        const response = await axios.delete(`http://localhost:10000/notes/${id}`);
         
         const updatedNotes = notes.filter((note => {
             return note.id !== id;
@@ -58,7 +58,7 @@ function Provider({ children }) {
     }
 
     const editNote = async (note) => {
-        const response = await axios.put(`http://localhost:3001/notes/${note.id}`, note);
+        const response = await axios.put(`http://localhost:10000/notes/${note.id}`, note);
 
         const updatedNotes = notes.map((updatedNote) => {
             if(note.id === updatedNote.id ){
